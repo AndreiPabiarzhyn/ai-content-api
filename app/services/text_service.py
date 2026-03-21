@@ -32,3 +32,6 @@ def simplify_text_logic(text: str) -> str:
         simplified = re.sub(pattern, replacement, simplified, flags=re.IGNORECASE)
 
     return simplified
+
+def generate_text_logic(prompt: str) -> str:
+    return f"Here is a short content idea about {prompt}. It can be useful and engaging for readers."

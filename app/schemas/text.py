@@ -14,3 +14,7 @@ class SimplifyResponse(BaseModel):
     original: str
     simplifield: str
 
+
+class GenerateResponse(BaseModel):
+    prompt: str
+    generated: str

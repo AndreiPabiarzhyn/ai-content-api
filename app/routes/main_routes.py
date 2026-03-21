@@ -3,6 +3,8 @@ from app.schemas.text import TextRequest, CorrectResponse
 from app.services.text_service import correct_text_logic
 from app.schemas.text import SimplifyResponse
 from app.services.text_service import simplify_text_logic
+from app.schemas.text import GenerateResponse
+from app.services.text_service import generate_text_logic
 
 #мини APi внутри api
 router = APIRouter()
@@ -34,4 +36,14 @@ def simplify_text(request:TextRequest):
     return {
         "original": request.text,
         "simplifield": simplified
+    }
+
+
+@router.post("/generate", response_model=GenerateResponse)
+def generate_text(request: TextRequest):
+    generated = generate_text_logic(request.text)
+
+    return {
+        "prompt": request.text,
+        "generated": generated
     }
