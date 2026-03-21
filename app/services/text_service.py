@@ -8,6 +8,12 @@ CORRECTION_RULES = [
     (r"\bdo not\b", "don't"),
 ]
 
+SIMPLIFY_RULES = [
+    (r"\bwould like to\b", "want to"),
+    (r"\bpurchase\b", "buy"),
+    (r"\bdo not\b", "don't"),
+]
+
 
 def correct_text_logic(text: str) -> str:
     text = text.lower()
@@ -22,8 +28,7 @@ def correct_text_logic(text: str) -> str:
 def simplify_text_logic(text: str) -> str:
     simplified = text
 
-    simplified = simplified.replace("would like to", "want to")
-    simplified = simplified.replace("purchase", "buy")
-    simplified = simplified.replace("do not", "don't")
+    for pattern, replacement in SIMPLIFY_RULES:
+        simplified = re.sub(pattern, replacement, simplified, flags=re.IGNORECASE)
 
     return simplified
