@@ -7,3 +7,7 @@ app = FastAPI()
 def root():
     return {"message": "AI Content is running"}
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
