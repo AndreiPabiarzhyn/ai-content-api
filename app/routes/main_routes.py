@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from app.schemas.text import TextRequest, CorrectRespanse
+from app.schemas.text import TextRequest, CorrectResponse
+from app.services.text_service import correct_text_logic
 
 #мини APi внутри api
 router = APIRouter()
@@ -15,15 +16,11 @@ def health():
     return {"status": "ok"}
 
 
-@router.post("/correct", response_model=CorrectRespanse)
+@router.post("/correct", response_model=CorrectResponse)
 def correct_text(request: TextRequest):
-    text = request.text
-
-    corrected = text.replace("i ", "I ")
-    corrected = corrected.replace("has", "have")
-    corrected = corrected.replace("a apple", "an apple")
+    corrected = correct_text_logic(request.text)
 
     return {
-        "original": text,
+        "original": request.text,
         "corrected": corrected
     }

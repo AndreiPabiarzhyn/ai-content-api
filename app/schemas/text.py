@@ -5,6 +5,6 @@ class TextRequest(BaseModel):
     text: str
 
 
-class CorrectRespanse(BaseModel):
+class CorrectResponse(BaseModel):
     original: str
     corrected: str
