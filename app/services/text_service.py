@@ -1,6 +1,12 @@
 def correct_text_logic(text: str) -> str:
-    corrected = text.replace("i ", "I ")
-    corrected = corrected.replace("has", "have")
-    corrected = corrected.replace("a apple", "an apple")
+    original = text
 
-    return corrected
+    text = text.lower()
+
+    text = text.replace("i ", "I ")
+    text = text.replace("has", "have")
+    text = text.replace("a apple", "an apple")
+
+    text = text.capitalize()
+
+    return text
