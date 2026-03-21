@@ -8,3 +8,9 @@ class TextRequest(BaseModel):
 class CorrectResponse(BaseModel):
     original: str
     corrected: str
+
+
+class SimplifyResponse(BaseModel):
+    original: str
+    simplifield: str
+
